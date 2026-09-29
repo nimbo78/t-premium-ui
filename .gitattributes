@@ -1,0 +1,2 @@
+# Web fonts: never touch line endings.
+*.woff2 binary

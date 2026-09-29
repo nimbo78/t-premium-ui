@@ -1,0 +1,7 @@
+/* T-Premium UI fonts: T-Sans (the TinkoffSans files of the T-Bank CDN kit hold T-Sans) for
+   headings, Neue Haas Unica for text. Licensed to T-Bank: for use inside the bank only. */
+@font-face { font-family: "TinkoffSans"; font-weight: 400; font-style: normal; font-display: swap; src: url("../fonts/TinkoffSans.woff2") format("woff2"); }
+@font-face { font-family: "TinkoffSans"; font-weight: 500; font-style: normal; font-display: swap; src: url("../fonts/TinkoffSans_Medium.woff2") format("woff2"); }
+@font-face { font-family: "TinkoffSans"; font-weight: 700; font-style: normal; font-display: swap; src: url("../fonts/TinkoffSans_Bold.woff2") format("woff2"); }
+@font-face { font-family: "Haas"; font-weight: 400; font-style: normal; font-display: swap; src: url("../fonts/NeueHaasUnicaW1G-Regular.woff2") format("woff2"); }
+@font-face { font-family: "Haas"; font-weight: 500; font-style: normal; font-display: swap; src: url("../fonts/NeueHaasUnicaW1G-Medium.woff2") format("woff2"); }

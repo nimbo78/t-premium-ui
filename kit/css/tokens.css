@@ -1,0 +1,100 @@
+/* T-Premium UI theme tokens: 2 styles (warm = T-Premium, classic) x 2 modes, WCAG AA text pairs
+   (tests/tokens.test.ts). Components use only these variables. */
+
+:root {
+  --swatch-warm: conic-gradient(from 200deg, #ffe3b8, #ffd37a, #e2681c, #ffe3b8);
+  --swatch-classic: conic-gradient(from 200deg, #8fa9ec, #486cc8, #2e4f9e, #8fa9ec);
+}
+
+:root,
+:root[data-style="warm"][data-mode="light"] {
+  --page: #ffffff; --side: #ffffff; --line: rgba(0, 16, 36, 0.12);
+  --text: rgba(0, 0, 0, 0.8); --muted: rgba(0, 0, 0, 0.58); --faint: rgba(0, 0, 0, 0.38);
+  --nav-on: #fef7ef;
+  --seg: #f3f0ec; --seg-text: rgba(0, 0, 0, 0.7); --seg-on: #bf5410; --seg-on-text: #ffffff;
+  --raised: #ffffff; --raised-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+  --focus: #e2681c; --accent: #e2681c; --accent-soft: #ffe4cc; --accent-text: #8a3c0c;
+  --card: linear-gradient(90deg, #fef7ef 50%, #fcecd9 100%); --card-solid: #fef7ef; --card-end: #fcecd9; --card-line: transparent;
+  --panel: #ffffff; --panel-line: rgba(0, 16, 36, 0.12);
+  --field: #ffffff; --field-line: rgba(0, 16, 36, 0.12); --chip: #ffffff;
+  --tg-off: #d9d4ce; --tg-on: #e2681c; --knob: #ffffff;
+  --cta: #ffdd2d; --cta-solid: #ffdd2d; --on-cta: #333333;
+  --sec: #ffffff; --sec-line: rgba(0, 16, 36, 0.12);
+  --danger: #d52b1e; --on-danger: #ffffff;
+  --log: #1f1b17; --log-text: #e9e1d8; --log-muted: #a89d91; --log-line: #2c2620;
+  --log-warn: #ffb340; --log-err: #ff7b70;
+  --row-alt: #fef7ef;
+  --pos-bg: #e3f5e8; --pos-text: #177c32; --neg-bg: #fde8e6; --neg-text: #b3261e; --warn-bg: #fff1d6; --warn-text: #8a5a00;
+  --mark-a: #ffd37a; --mark-b: #e2681c; --mark-ink: #2a1a0c;
+  --scrim: rgba(20, 14, 8, 0.45); --pop: #ffffff; --pop-shadow: 0 12px 32px rgba(0, 0, 0, 0.14);
+  --auth-bg: linear-gradient(160deg, #edf2f4 10%, #efe3d8 40%, #fce4ba 62%, #fae3a0 74%, #ffc472 90%, #ffb50a 100%);
+}
+
+:root[data-style="warm"][data-mode="dark"] {
+  --page: #000000; --side: #0b0b0c; --line: #1f1f22;
+  --text: rgba(255, 255, 255, 0.9); --muted: rgba(255, 255, 255, 0.54); --faint: rgba(255, 255, 255, 0.36);
+  --nav-on: #1c1a18;
+  --seg: #18181c; --seg-text: rgba(255, 255, 255, 0.7); --seg-on: #bf5410; --seg-on-text: #ffffff;
+  --raised: #2a2a2e; --raised-shadow: none;
+  --focus: #ff8a3d; --accent: #ff8a3d; --accent-soft: #2b1f15; --accent-text: #ffc99a;
+  --card: #18181c; --card-solid: #18181c; --card-end: #18181c; --card-line: #222226;
+  --panel: #121214; --panel-line: #222226;
+  --field: #222226; --field-line: #2c2c30; --chip: #1f1f23;
+  --tg-off: #3a3a3f; --tg-on: #e2681c; --knob: #ffffff;
+  --cta: linear-gradient(100deg, #ffe3b8 0%, #f7c58a 55%, #efae6e 100%); --cta-solid: #efae6e; --on-cta: #2a1a0c;
+  --sec: #222226; --sec-line: #2e2e33;
+  --danger: #d52b1e; --on-danger: #ffffff;
+  --log: #0d0c0b; --log-text: #d8d2ca; --log-muted: #8a8178; --log-line: #1c1a18;
+  --log-warn: #ffb340; --log-err: #ff7b70;
+  --row-alt: #111113;
+  --pos-bg: #12301c; --pos-text: #7ee2a0; --neg-bg: #3a1512; --neg-text: #ff9d93; --warn-bg: #35270f; --warn-text: #ffcf7a;
+  --mark-a: #ffe3b8; --mark-b: #e9a661; --mark-ink: #2a1a0c;
+  --scrim: rgba(0, 0, 0, 0.6); --pop: #18181c; --pop-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
+  --auth-bg: radial-gradient(120% 90% at 85% 110%, rgba(239, 174, 110, 0.35) 0%, rgba(226, 104, 28, 0.12) 35%, rgba(0, 0, 0, 0) 65%), #000000;
+}
+
+:root[data-style="classic"][data-mode="light"] {
+  --page: #f6f7f8; --side: #ffffff; --line: rgba(0, 16, 36, 0.12);
+  --text: rgba(0, 0, 0, 0.8); --muted: rgba(0, 0, 0, 0.58); --faint: rgba(0, 0, 0, 0.38);
+  --nav-on: #eef2fb;
+  --seg: #eceef1; --seg-text: rgba(0, 0, 0, 0.7); --seg-on: #ffffff; --seg-on-text: rgba(0, 0, 0, 0.85);
+  --raised: #ffffff; --raised-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+  --focus: #486cc8; --accent: #486cc8; --accent-soft: #e7edfa; --accent-text: #2e4f9e;
+  --card: #ffffff; --card-solid: #ffffff; --card-end: #ffffff; --card-line: rgba(0, 16, 36, 0.08);
+  --panel: #ffffff; --panel-line: rgba(0, 16, 36, 0.1);
+  --field: #f6f7f8; --field-line: rgba(0, 16, 36, 0.1); --chip: #ffffff;
+  --tg-off: #d4d7dc; --tg-on: #486cc8; --knob: #ffffff;
+  --cta: #486cc8; --cta-solid: #486cc8; --on-cta: #ffffff;
+  --sec: #ffffff; --sec-line: rgba(0, 16, 36, 0.12);
+  --danger: #d52b1e; --on-danger: #ffffff;
+  --log: #131417; --log-text: #d4d6dc; --log-muted: #8b8f99; --log-line: #202227;
+  --log-warn: #ffb340; --log-err: #ff7b70;
+  --row-alt: #f6f7f8;
+  --pos-bg: #e3f5e8; --pos-text: #177c32; --neg-bg: #fde8e6; --neg-text: #b3261e; --warn-bg: #fff1d6; --warn-text: #8a5a00;
+  --mark-a: #6d8ce0; --mark-b: #3556ad; --mark-ink: #ffffff;
+  --scrim: rgba(10, 14, 24, 0.45); --pop: #ffffff; --pop-shadow: 0 12px 32px rgba(0, 0, 0, 0.14);
+  --auth-bg: linear-gradient(160deg, #f6f7f8 30%, #e7edfa 100%);
+}
+
+:root[data-style="classic"][data-mode="dark"] {
+  --page: #000000; --side: #0a0a0b; --line: #1f1f22;
+  --text: rgba(255, 255, 255, 0.9); --muted: rgba(255, 255, 255, 0.54); --faint: rgba(255, 255, 255, 0.36);
+  --nav-on: #18181c;
+  --seg: #18181c; --seg-text: rgba(255, 255, 255, 0.7); --seg-on: #ececec; --seg-on-text: #000000;
+  --raised: #2a2a2e; --raised-shadow: none;
+  --focus: #6d8ce0; --accent: #6d8ce0; --accent-soft: #17213a; --accent-text: #a9bdf2;
+  --card: #18181c; --card-solid: #18181c; --card-end: #18181c; --card-line: #222226;
+  --panel: #121214; --panel-line: #222226;
+  --field: #202428; --field-line: #2a2e33; --chip: #202428;
+  --tg-off: #3a3a3f; --tg-on: #486cc8; --knob: #ffffff;
+  --cta: #486cc8; --cta-solid: #486cc8; --on-cta: #ffffff;
+  --sec: #202428; --sec-line: #2e3238;
+  --danger: #d52b1e; --on-danger: #ffffff;
+  --log: #0b0b0d; --log-text: #cfd2d8; --log-muted: #7f838c; --log-line: #18191c;
+  --log-warn: #ffb340; --log-err: #ff7b70;
+  --row-alt: #101012;
+  --pos-bg: #12301c; --pos-text: #7ee2a0; --neg-bg: #3a1512; --neg-text: #ff9d93; --warn-bg: #35270f; --warn-text: #ffcf7a;
+  --mark-a: #6d8ce0; --mark-b: #3556ad; --mark-ink: #ffffff;
+  --scrim: rgba(0, 0, 0, 0.6); --pop: #18181c; --pop-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
+  --auth-bg: radial-gradient(110% 90% at 85% 110%, rgba(72, 108, 200, 0.35) 0%, rgba(72, 108, 200, 0.1) 35%, rgba(0, 0, 0, 0) 65%), #000000;
+}
