@@ -15,21 +15,26 @@ description: T-Premium UI design system (the Switch Sync look) — installs it i
 
 ## Подключить — React + Vite + Tailwind 3
 
-Проверь стек: `package.json` с `react`, `vite`, `tailwindcss` 3.x и `index.html` в корне фронтенда. Другой
-стек (Tailwind 4, Jinja / HTML, без Vite) — скажи пользователю, что пока поддержан только React + Vite +
-Tailwind 3, и остановись.
+Все команды — в папке фронтенда (где `package.json` и `index.html`; в монорепозитории это подпапка).
+Проверь стек: `package.json` с `react` 19 и `vite`, TypeScript. Tailwind 4, Jinja / HTML или сборка не на
+Vite — скажи пользователю, что пока поддержан только React + Vite + Tailwind 3, и остановись.
 
+0. Нет Tailwind — поставь Tailwind 3: `npm i -D tailwindcss@3 postcss autoprefixer` и `postcss.config.js`
+   с `export default { plugins: { tailwindcss: {}, autoprefixer: {} } };`.
 1. Скопируй из `kit/`:
    - `kit/css/tokens.css`, `kit/css/base.css`, `kit/css/components.css` → `src/ds/css/`;
    - `kit/react/` целиком → `src/ds/react/` (`theme/`, `components/`, `guards/`, `index.ts`);
    - `kit/tailwind/preset.js` → `src/ds/tailwind/preset.js`;
    - `kit/js/boot.template.html` → `src/ds/js/boot.template.html`;
-   - `kit/VERSION` → `src/ds/VERSION`.
+   - `kit/VERSION` → `src/ds/VERSION`, `kit/MANIFEST` → `src/ds/MANIFEST` (по нему защитный тест находит
+     правки внутри `src/ds`).
 2. Шрифты:
    - обычно — `kit/css/fonts.css` → `src/ds/css/fonts.css` и `kit/fonts/` → `src/ds/fonts/` (Vite упакует их сам);
    - если проект уже отдаёт шрифты сам (в `index.html` есть `<link rel="stylesheet" href="/fonts.css">`,
      как у Switch Sync) — `kit/fonts/*` → `public/fonts/`, а `fonts.css` не копируй.
-3. `src/index.css` — сначала система, потом Tailwind, потом стили проекта:
+3. `src/index.css` — сначала система, потом Tailwind, потом стили проекта. Шаблонные стили Vite
+   (содержимое `src/index.css` из `npm create vite`, файл `src/App.css` и его импорт) убери: они без слоя и
+   перебивают каркас и кольцо фокуса системы.
    ```css
    @import "./ds/css/fonts.css"; /* только если копировал fonts.css */
    @import "./ds/css/tokens.css";
@@ -40,34 +45,45 @@ Tailwind 3, и остановись.
    @tailwind utilities;
    ```
 4. `tailwind.config.js`: `import preset from "./src/ds/tailwind/preset.js";`, `presets: [preset]`; `content`
-   покрывает `./src/**/*.{ts,tsx}` (а значит и `src/ds/`). Если в Vitest-конфиге есть `test.css.include`,
-   добавь туда `/ds\/css\//` (без `$`: id модуля оканчивается на `.css?raw`).
+   покрывает `./index.html` и `./src/**/*.{ts,tsx}` (а значит и `src/ds/`).
 5. Ключ темы проекта — короткое имя в kebab-case (у Switch Sync `switch-sync`). Смена ключа сбрасывает
    выбор темы у всех пользователей, поэтому выбирается один раз.
    - `index.html`: вставь в `<head>` содержимое `src/ds/js/boot.template.html`, заменив `__STORAGE_KEY__` на ключ;
    - `src/main.tsx` до `createRoot(...)`: `configureTheme({ storageKey: "<ключ>" })` из `./ds/react/theme`;
    - в корне приложения — `<ThemeController />`;
-   - в файле настройки тестов (`test.setupFiles`) — тот же `configureTheme(...)`.
-6. Зависимости: `npm i zustand lucide-react` (нужен React 19).
-7. Проверка: `npm test` (включая `src/ds/react/guards/noRawColors.test.ts`) и `npm run build`.
+   - если у тестов есть `test.setupFiles` — там тот же `configureTheme(...)`.
+6. Зависимости: `npm i zustand lucide-react` (нужен React 19). Нет Vitest — `npm i -D vitest` и в
+   `package.json` скрипт `"test": "vitest run"`: защитные тесты `src/ds/react/guards/` — часть системы, а
+   `tsc -b` проверяет их при сборке. Конфиг Vitest (`vitest.config.ts` или блок `test` в `vite.config.ts`
+   с `/// <reference types="vitest/config" />`) должен содержать `css: { include: [/ds\/css\//] }` — без `$`,
+   id модуля оканчивается на `.css?raw`: защитный тест читает CSS системы как текст.
+7. Новый проект без своего интерфейса — собери каркас по `reference/screens.md`: `App.tsx` на `AppShell`
+   (`Logo` с глифом проекта, `NavList` с пунктами `nav-item`) и первая страница с `PageHeader`; шаблонный
+   контент Vite (логотипы, счётчик) убери.
+8. Проверка: `npm test` (`guards/noRawColors` — нет сырых цветов, `guards/dsIntact` — `src/ds` без правок) и
+   `npm run build`.
 
 ## Обновить
+
+Все команды — в папке фронтенда: git-пути вида `src/ds` считаются от текущей папки.
 
 1. Сравни `src/ds/VERSION` проекта с `kit/VERSION`. Совпадают — скажи, что система актуальна.
 2. Покажи записи `CHANGELOG.md` новее версии проекта, особенно «Шаги». Сменилась мажорная версия —
    перечисли, что придётся поправить в коде проекта.
-3. `git status --porcelain -- src/ds` и `git diff -- src/ds`: есть правки внутри `src/ds/` — остановись и
-   спроси. `src/ds/` принадлежит системе: общие правки делаются в системе, не в проекте.
+3. `npx vitest run src/ds/react/guards`: `dsIntact` сверяет `src/ds` с манифестом той версии, что стоит в
+   проекте, и видит любые правки — и незакоммиченные, и закоммиченные (в версиях без `src/ds/MANIFEST`
+   смотри `git log` и `git diff` по `src/ds` от коммита установки). Есть правки — остановись и спроси:
+   `src/ds/` принадлежит системе, общие правки делаются в системе, не в проекте.
 4. Есть скрипт снимков (у Switch Sync — `web/frontend/scripts/ui-snapshots.cjs`) — сними «до».
-5. Замени файлы `src/ds/` файлами `kit/` по тем же правилам, что при подключении (включая шрифты); файлы,
-   которых больше нет в `kit/`, удали. Выполни «Шаги» новых версий.
+5. Замени файлы `src/ds/` файлами `kit/` по тем же правилам, что при подключении (включая шрифты и
+   `MANIFEST`); файлы, которых больше нет в `kit/`, удали. Выполни «Шаги» новых версий.
 6. Тесты и сборка проекта, снимки «после» и сравнение; отличия покажи пользователю.
 7. Коммит: `⬆️ chore(ds): T-Premium UI <старая> → <новая>`.
 
 ## Правила работы с интерфейсом
 
-- `src/ds/` руками не правится. Стили и токены, которые нужны только проекту, — в `src/index.css` после
-  `@tailwind utilities` (свои классы — в `@layer components`).
+- `src/ds/` руками не правится (это ловит `src/ds/react/guards/dsIntact.test.ts`). Стили и токены, которые
+  нужны только проекту, — в `src/index.css` после `@tailwind utilities` (свои классы — в `@layer components`).
 - Цвета — только токены (`var(--…)`, Tailwind-цвета из preset: `bg-page`, `text-fg-muted`, `text-accent`…).
   Палитра Tailwind (`text-red-600`) и hex запрещены — это ловит `src/ds/react/guards/noRawColors.test.ts`.
 - Сначала компоненты системы (`src/ds/react/components`), потом её классы (`reference/components.md`), и

@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "test": "vitest run",
+    "test": "vitest run && vitest run --config vitest.compiler.config.ts",
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
@@ -15,6 +15,7 @@
     "@vitejs/plugin-react": "^6.0.4",
     "jsdom": "^29.1.1",
     "lucide-react": "^1.48.0",
+    "oxc-transform-react": "^0.145.0",
     "postcss": "^8.5.23",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",

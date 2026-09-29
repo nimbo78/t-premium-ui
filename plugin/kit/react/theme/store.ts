@@ -1,4 +1,4 @@
-import { create } from "zustand";
+import { create, useStore } from "zustand";
 import { persist } from "zustand/middleware";
 import { setThemeKeys } from "./keys";
 import type { ThemeMode, ThemeStyle } from "./types";
@@ -44,9 +44,13 @@ interface UseThemeStore {
   setState: (partial: Partial<Pick<ThemeState, "style" | "mode">>) => void;
 }
 
+const wholeState = (state: ThemeState) => state;
+
+// zustand's useStore on the store configureTheme created: one hook call with a selector, never a
+// hook passed around as a value (the Rules of React; React Compiler relies on them).
 function useTheme<T>(selector?: (state: ThemeState) => T): ThemeState | T {
-  const bound = current();
-  return selector ? bound(selector) : bound();
+  const select: (state: ThemeState) => ThemeState | T = selector ?? wholeState;
+  return useStore(current(), select);
 }
 
 export const useThemeStore: UseThemeStore = Object.assign(useTheme as UseThemeStore, {

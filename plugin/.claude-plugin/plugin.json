@@ -1,7 +1,7 @@
 {
   "name": "t-premium-ui",
   "description": "T-Premium UI design system (the Switch Sync look): CSS core, fonts, themes, React components and a skill that installs it into a project and keeps it up to date.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": { "name": "nimbo78" },
   "homepage": "https://github.com/nimbo78/t-premium-ui",
   "repository": "https://github.com/nimbo78/t-premium-ui",
