@@ -1,0 +1,30 @@
+<script>
+  // T-Premium UI: applies the saved style/mode before first paint. "__STORAGE_KEY__-theme" is the
+  // user's choice (zustand persist format), "__STORAGE_KEY__-theme-resolved" the auto mode cache.
+  (function () {
+    var root = document.documentElement;
+    var style = "warm";
+    var mode = "auto";
+    try {
+      var saved = JSON.parse(localStorage.getItem("__STORAGE_KEY__-theme") || "null");
+      var state = (saved && saved.state) || {};
+      if (state.style === "warm" || state.style === "classic") style = state.style;
+      if (state.mode === "light" || state.mode === "dark" || state.mode === "auto") mode = state.mode;
+    } catch (e) {}
+    var resolved = mode;
+    if (mode === "auto") {
+      resolved = null;
+      try {
+        var cached = JSON.parse(localStorage.getItem("__STORAGE_KEY__-theme-resolved") || "null");
+        if (cached && (cached.mode === "light" || cached.mode === "dark") && Date.now() < cached.until) {
+          resolved = cached.mode;
+        }
+      } catch (e) {}
+      if (!resolved) {
+        resolved = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      }
+    }
+    root.setAttribute("data-style", style);
+    root.setAttribute("data-mode", resolved);
+  })();
+</script>

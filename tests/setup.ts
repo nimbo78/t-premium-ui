@@ -1,4 +1,5 @@
 import "@testing-library/jest-dom/vitest";
+import { configureTheme } from "../kit/react/theme/store";
 
 // jsdom has no modal dialogs: showModal()/close() only toggle `open`.
 if (typeof HTMLDialogElement !== "undefined" && typeof HTMLDialogElement.prototype.showModal !== "function") {
@@ -25,3 +26,6 @@ if (typeof window.matchMedia !== "function") {
       dispatchEvent: () => false,
     }) as MediaQueryList;
 }
+
+// Components read the theme store: every test file runs with a configured key.
+configureTheme({ storageKey: "t-premium-ui-test" });
