@@ -1,7 +1,7 @@
 import { render } from "@testing-library/react";
 import { beforeEach, expect, test } from "vitest";
-import { ThemeController } from "../../kit/react/theme/ThemeController";
-import { useThemeStore } from "../../kit/react/theme/store";
+import { ThemeController } from "../../plugin/kit/react/theme/ThemeController";
+import { useThemeStore } from "../../plugin/kit/react/theme/store";
 
 beforeEach(() => {
   localStorage.clear();

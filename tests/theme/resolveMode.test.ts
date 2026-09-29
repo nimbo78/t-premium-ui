@@ -1,5 +1,5 @@
 import { expect, test } from "vitest";
-import { nextAutoSwitch, resolveMode } from "../../kit/react/theme/resolveMode";
+import { nextAutoSwitch, resolveMode } from "../../plugin/kit/react/theme/resolveMode";
 
 test("explicit modes are returned as is", () => {
   expect(resolveMode("light", new Date("2026-09-26T20:00:00Z"), true)).toBe("light");

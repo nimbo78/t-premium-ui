@@ -1,0 +1,12 @@
+{
+  "name": "t-premium-ui",
+  "description": "T-Premium UI design system for internal tools.",
+  "owner": { "name": "nimbo78" },
+  "plugins": [
+    {
+      "name": "t-premium-ui",
+      "source": "./plugin",
+      "description": "T-Premium UI: install the design system into a project, update it, follow its UI rules."
+    }
+  ]
+}

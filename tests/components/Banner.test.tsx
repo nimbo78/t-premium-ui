@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { expect, test } from "vitest";
-import { Banner } from "../../kit/react/components/Banner";
+import { Banner } from "../../plugin/kit/react/components/Banner";
 
 test("an error banner is announced", () => {
   render(<Banner tone="neg">Сломалось</Banner>);

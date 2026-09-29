@@ -1,7 +1,7 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import { beforeEach, expect, test } from "vitest";
-import { useThemeStore } from "../../kit/react/theme/store";
-import { AppearancePopover } from "../../kit/react/components/AppearancePopover";
+import { useThemeStore } from "../../plugin/kit/react/theme/store";
+import { AppearancePopover } from "../../plugin/kit/react/components/AppearancePopover";
 
 beforeEach(() => {
   localStorage.clear();

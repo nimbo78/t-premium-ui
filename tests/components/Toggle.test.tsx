@@ -1,6 +1,6 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import { expect, test, vi } from "vitest";
-import { Toggle } from "../../kit/react/components/Toggle";
+import { Toggle } from "../../plugin/kit/react/components/Toggle";
 
 test("is a labelled checkbox", () => {
   const onChange = vi.fn();

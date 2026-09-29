@@ -7,7 +7,7 @@ export default defineConfig({
     environment: "jsdom",
     globals: true,
     setupFiles: "./tests/setup.ts",
-    // kit/react/guards/*.test.ts are for the projects that copy the kit, not for this repository.
+    // plugin/kit/react/guards/*.test.ts are for the projects that copy the kit, not for this repository.
     include: ["tests/**/*.test.{ts,tsx}"],
     // The tests read the CSS sources with ?raw (the module id ends in ".css?raw": no $ anchor).
     css: { include: [/\.css/] },

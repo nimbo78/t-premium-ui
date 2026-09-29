@@ -1,6 +1,6 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import { expect, test, vi } from "vitest";
-import { ConfirmDialog } from "../../kit/react/components/ConfirmDialog";
+import { ConfirmDialog } from "../../plugin/kit/react/components/ConfirmDialog";
 
 test("opens as a modal and reports the choice", () => {
   const onConfirm = vi.fn();

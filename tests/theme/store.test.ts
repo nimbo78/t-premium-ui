@@ -1,5 +1,5 @@
 import { beforeEach, expect, test, vi } from "vitest";
-import { configureTheme, useThemeStore } from "../../kit/react/theme/store";
+import { configureTheme, useThemeStore } from "../../plugin/kit/react/theme/store";
 
 beforeEach(() => {
   localStorage.clear();
@@ -24,6 +24,6 @@ test("a saved choice is restored when the theme is configured again (page reload
 
 test("using the theme before configureTheme is an explicit error", async () => {
   vi.resetModules();
-  const fresh = await import("../../kit/react/theme/store");
+  const fresh = await import("../../plugin/kit/react/theme/store");
   expect(() => fresh.useThemeStore.getState()).toThrow(/configureTheme/);
 });

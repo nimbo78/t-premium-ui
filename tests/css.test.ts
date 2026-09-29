@@ -2,9 +2,9 @@ import { existsSync, readFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { expect, test } from "vitest";
-import baseCss from "../kit/css/base.css?raw";
-import componentsCss from "../kit/css/components.css?raw";
-import fontsCss from "../kit/css/fonts.css?raw";
+import baseCss from "../plugin/kit/css/base.css?raw";
+import componentsCss from "../plugin/kit/css/components.css?raw";
+import fontsCss from "../plugin/kit/css/fonts.css?raw";
 
 // Classes a rule starts with: ".btn {", ".run-list li .run-row {" -> btn, run-list.
 const ruleClasses = (css: string) => new Set([...css.matchAll(/^\s*\.([a-z][\w-]*)/gm)].map((m) => m[1]));
@@ -42,7 +42,7 @@ test("fonts.css points at WOFF2 files next to it", () => {
   const urls = [...fontsCss.matchAll(/url\("(\.\.\/fonts\/[^"]+)"\)/g)].map((m) => m[1]);
   expect(urls).toHaveLength(5);
   // Not new URL(…, import.meta.url): Vite rewrites that into an asset URL.
-  const cssDir = resolve(dirname(fileURLToPath(import.meta.url)), "../kit/css");
+  const cssDir = resolve(dirname(fileURLToPath(import.meta.url)), "../plugin/kit/css");
   for (const url of urls) {
     const file = resolve(cssDir, url);
     expect(existsSync(file), url).toBe(true);

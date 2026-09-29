@@ -1,7 +1,7 @@
 import { beforeEach, expect, test } from "vitest";
-import template from "../../kit/js/boot.template.html?raw";
-import { cacheResolved } from "../../kit/react/theme/applyTheme";
-import { configureTheme, useThemeStore } from "../../kit/react/theme/store";
+import template from "../../plugin/kit/js/boot.template.html?raw";
+import { cacheResolved } from "../../plugin/kit/react/theme/applyTheme";
+import { configureTheme, useThemeStore } from "../../plugin/kit/react/theme/store";
 
 function runBoot(storageKey: string) {
   const code = template.replaceAll("__STORAGE_KEY__", storageKey).replace(/^\s*<script>/, "").replace(/<\/script>\s*$/, "");

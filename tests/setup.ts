@@ -1,5 +1,5 @@
 import "@testing-library/jest-dom/vitest";
-import { configureTheme } from "../kit/react/theme/store";
+import { configureTheme } from "../plugin/kit/react/theme/store";
 
 // jsdom has no modal dialogs: showModal()/close() only toggle `open`.
 if (typeof HTMLDialogElement !== "undefined" && typeof HTMLDialogElement.prototype.showModal !== "function") {

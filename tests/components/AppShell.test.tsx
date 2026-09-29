@@ -1,6 +1,6 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import { expect, test, vi } from "vitest";
-import { AppShell, NavList, UserRow, initials } from "../../kit/react/components/AppShell";
+import { AppShell, NavList, UserRow, initials } from "../../plugin/kit/react/components/AppShell";
 
 test.each([["a.smirnova", "AS"], ["igor", "I"], ["", "?"], [null, "?"], [undefined, "?"]])("initials(%s) = %s", (user, expected) => {
   expect(initials(user)).toBe(expected);

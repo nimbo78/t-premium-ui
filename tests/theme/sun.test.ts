@@ -1,5 +1,5 @@
 import { expect, test } from "vitest";
-import { sunTimes } from "../../kit/react/theme/sun";
+import { sunTimes } from "../../plugin/kit/react/theme/sun";
 
 const near = (actual: Date, iso: string) => Math.abs(actual.getTime() - Date.parse(iso)) <= 3 * 60_000;
 

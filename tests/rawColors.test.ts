@@ -1,8 +1,8 @@
 import { expect, test } from "vitest";
-import { findRawColors } from "../kit/react/guards/rawColors";
+import { findRawColors } from "../plugin/kit/react/guards/rawColors";
 
 const KIT_SOURCES = import.meta.glob<string>(
-  ["../kit/react/**/*.{ts,tsx}", "!../kit/react/guards/**"],
+  ["../plugin/kit/react/**/*.{ts,tsx}", "!../plugin/kit/react/guards/**"],
   { query: "?raw", import: "default", eager: true },
 );
 

@@ -1,6 +1,6 @@
 import { beforeEach, expect, test } from "vitest";
-import { applyTheme, cacheResolved } from "../../kit/react/theme/applyTheme";
-import { setThemeKeys } from "../../kit/react/theme/keys";
+import { applyTheme, cacheResolved } from "../../plugin/kit/react/theme/applyTheme";
+import { setThemeKeys } from "../../plugin/kit/react/theme/keys";
 
 beforeEach(() => {
   localStorage.clear();

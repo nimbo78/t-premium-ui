@@ -1,6 +1,6 @@
 import { expect, test } from "vitest";
-import tokensCss from "../kit/css/tokens.css?raw";
-import preset from "../kit/tailwind/preset.js";
+import tokensCss from "../plugin/kit/css/tokens.css?raw";
+import preset from "../plugin/kit/tailwind/preset.js";
 
 function tokenNames(value: unknown): string[] {
   if (typeof value === "string") return [...value.matchAll(/var\(--([\w-]+)\)/g)].map((m) => m[1]);

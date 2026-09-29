@@ -1,5 +1,5 @@
 import { expect, test } from "vitest";
-import tokensCss from "../kit/css/tokens.css?raw";
+import tokensCss from "../plugin/kit/css/tokens.css?raw";
 import { contrastRatio } from "./contrast";
 
 const THEMES = [

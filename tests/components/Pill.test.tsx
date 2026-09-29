@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { expect, test } from "vitest";
-import { Pill, type PillTone } from "../../kit/react/components/Pill";
+import { Pill, type PillTone } from "../../plugin/kit/react/components/Pill";
 
 test.each<PillTone>(["ok", "run", "q", "dry", "bad", "warn"])("tone %s gets pill and pill-%s", (tone) => {
   render(<Pill tone={tone}>метка</Pill>);
